@@ -38,6 +38,7 @@
             align-items: center;
             /* TODO MARDI CSS : Vérifier que c'est du flexbox correct */
         }
+         
 
         .logo {
             font-size: 1.8rem;
@@ -82,11 +83,15 @@
             margin-bottom: 24px;
             letter-spacing: -1px;
             line-height: 1.1;
+
+        }
+        h1{
+            color: #3c00ff;
         }
 
         .hero p {
             font-size: 1.3rem;
-            color: #6f6f74;
+            color: #000000;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
@@ -94,6 +99,32 @@
             line-height: 1.6;
             font-weight: 400;
         }
+       
+        .cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
 
         .cta-button {
             display: inline-block;
@@ -106,6 +137,59 @@
             transition: all 0.3s;
             font-size: 1.05rem;
         }
+        .liquid-morph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+}
+
+.liquid-morph-element {
+  width: 250px;
+  height: 100px;
+  background: #0a2342;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.liquid-morph-element span {
+  color: #fff;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.liquid-morph-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    #0ff 0deg, 
+    #0a2342 120deg, 
+    #0ff 240deg
+  );
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.liquid-morph-element:hover {
+  border-radius: 10px;
+  transform: rotate(15deg);
+}
+
+.liquid-morph-element:hover::before {
+  opacity: 0.5;
+  transform: scale(2);
+}
 
         .cta-button:hover {
             /* TODO MARDI CSS : Ajouter background-color: #0a84ff; */
@@ -154,10 +238,85 @@
             margin-bottom: 24px;
             letter-spacing: -0.5px;
         }
+        .container{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.container h2:nth-child(1) {
+  color: #d50606;
+  font-family: 'Fira Code', monospace;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0 0 0 35%;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 170px;
+  animation: type 2s steps(40,end) forwards;
+}
+
+.container h2:nth-child(2) {
+  opacity: 0;
+  font-family: "Work Sans", sans-serif;
+  margin: 0 auto auto auto;
+  background: linear-gradient(to right, #a397ff, #2900bb, #493c8c);
+  font-weight: 800;
+  font-size: 100px;  
+  width: 430px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+  animation: shring-animation 2.2s steps(40,end) 2s forwards, blink .5s step-end infinite alternate;
+}
+
+@keyframes shring-animation {
+  0% {
+    background-position: 0 0;
+    opacity: 0;
+    width: 0;
+  }
+  1% {
+    background-position: 0 0;
+    opacity: 1;
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  50% {
+    background-position: 150px 0;
+    opacity: 1;
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  100% {
+    background-position: 400px 0;
+    opacity: 1;
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  1%, 99%{
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  100%{
+    border-right: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
 
         .about-text p {
             font-size: 1.1rem;
-            color: #6f6f74;
+            color: #000000;
             margin-bottom: 24px;
             line-height: 1.8;
             font-weight: 400;
@@ -246,15 +405,58 @@
         .project-image {
             width: 40%;
             min-height: 300px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 1.3rem;
             font-weight: 600;
         }
+        .card {
+  width: 600px;
+  height: 270px;
+  margin: 1rem auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.card-front {
+  background: white;
+  border: 10px solid #e5e7eb;
+}
+
+.card-back {
+  background: #000000;
+  color: white;
+  transform: rotateY(180deg);
+  border: #000000 20px solid;
+}
 
         .project-content {
             flex: 1;
@@ -263,13 +465,57 @@
         .project-content h3 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1d1d1f;
+            color: #000000;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
         }
+        .card {
+  width: 600px;
+  height: 270px;
+  margin: 1rem auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.card-front {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+.card-back {
+  background: #000000;
+  color: white;
+  transform: rotateY(180deg);
+    border: #000000 25px solid;
+}
+
 
         .project-content p {
-            color: #6f6f74;
+            color: #211950;
             margin-bottom: 20px;
             font-size: 1.1rem;
             line-height: 1.7;
